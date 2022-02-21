@@ -47,6 +47,8 @@ Application container deployed to print User-Agent Info
 
 ## Usage
 
+Backend is created using S3 Bucket to store the terraform state file.
+
 Assuming ECR is created and images are pushed to ECR repo in the region the stack will be created. 
 
 ```
@@ -54,6 +56,8 @@ export AWS_ACCESS_KEY_ID = AKIA******
 export AWS_SECRET_ACCESS_KEY = **********
 
 ```
+
+Use the load balancer dns host to access the docker container app.
 
 In order to do any changes to the infrastructure you must:
 
