@@ -22,13 +22,13 @@ resource "aws_alb_target_group" "alb-tgp" {
   vpc_id      = aws_vpc.aws-vpc.id
 
   health_check {
-    healthy_threshold   = 3
+    healthy_threshold   = 5
     unhealthy_threshold = 3
     timeout             = 3
     protocol            = "HTTP"
     matcher             = "200"
     path                = var.health_check_path
-    interval            = 60
+    interval            = 100
   }
 }
 
