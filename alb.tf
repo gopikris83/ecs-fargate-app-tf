@@ -3,10 +3,10 @@
 ###########################################################
 resource "aws_alb" "alb" {
   name               = "ecsfargateapp-load-balancer"
-  subnets            = aws_subnet.public_subnet.*.id
+  subnets            = var.public_subnets
   internal           = false
   load_balancer_type = "application"
-  security_groups    = [aws_security_group.alb-sg.id]
+  security_groups    = [var.alb_security_groups]
 
   tags = {
     Name        = "${var.app_name}-alb"
@@ -19,7 +19,7 @@ resource "aws_alb_target_group" "alb-tgp" {
   port        = 80
   protocol    = "HTTP"
   target_type = "ip"
-  vpc_id      = aws_vpc.aws-vpc.id
+  vpc_id      = var.log-vpc
 
   health_check {
     healthy_threshold   = 5
