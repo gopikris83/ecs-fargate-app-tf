@@ -50,5 +50,34 @@ variable "app_name" {
 
 variable "app_environment" {
   description = "App environment"
-  default     = "Tes"
+  default     = "Test"
+}
+
+variable "private_subnets" {
+  description = "A list of subnets to associate with the ECS. e.g. ['subnet-1a2b3c4d','subnet-1a2b3c4e','subnet-1a2b3c4f']"
+  type        = list(string)
+  default     = ["subnet-0d92a4a70a993913f", "subnet-0ef0dca036912c952"]
+}
+
+variable "public_subnets" {
+  description = "A list of subnets to associate with the load balancer. e.g. ['subnet-1a2b3c4d','subnet-1a2b3c4e','subnet-1a2b3c4f']"
+  type        = list(string)
+  default     = ["subnet-04818279e56590338", "subnet-0ce426e06832c4dd9"]
+}
+
+variable "alb_security_groups" {
+  description = "The security groups to attach to the load balancer. e.g. [\"sg-edcd9784\",\"sg-edcd9785\"]"
+  type        = string
+  default     = "sg-0ef635ecd1e4293cb"
+}
+
+variable "ecs_security_groups" {
+  description = "The security groups to attach to the ecs. e.g. [\"sg-edcd9784\",\"sg-edcd9785\"]"
+  type        = string
+  default     = "sg-04cd007f8dff7f6a6"
+}
+
+variable "log-vpc" {
+  type    = string
+  default = "vpc-0032814fcbedc1488"
 }
